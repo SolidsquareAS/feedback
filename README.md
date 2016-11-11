@@ -13,6 +13,6 @@
 https://sq-feedback.herokuapp.com
 
 [repo-url]: https://github.com/SolidsquareAS/feedback
-[logo]: https://github.com/SolidsquareAS/feedback/master/public/logo.png
+[logo]: https://github.com/SolidsquareAS/feedback/raw/master/public/logo.png
 [travis-badge]: https://travis-ci.org/SolidsquareAS/feedback.svg?branch=master
 [travis-badge-url]: https://travis-ci.org/SolidsquareAS/feedback
