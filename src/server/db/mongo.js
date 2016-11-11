@@ -4,8 +4,8 @@ import Promise from 'bluebird';
 
 mongoose.Promise = Promise;
 
-const log = debug('papairus:db:mongo');
-const error = debug('papairus:db:mongo:error');
+const log = debug('feedback:db:mongo');
+const error = debug('feedback:db:mongo:error');
 
 let db;
 

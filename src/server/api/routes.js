@@ -1,8 +1,8 @@
 import express from 'express';
-import { router as memberRouter } from './members';
+import { router as commentRouter } from './comment';
 
 const router = express.Router();
 
-router.use('/members', memberRouter);
+router.use('/comments', commentRouter);
 
 export default router;

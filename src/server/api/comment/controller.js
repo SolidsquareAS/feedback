@@ -1,4 +1,4 @@
-import Member from './member.model';
+import Comment from './comment.model';
 import { NotFoundError, ValidationError } from '../../error';
 
 /**
@@ -8,16 +8,16 @@ import { NotFoundError, ValidationError } from '../../error';
  * @param next
  */
 export function list(req, res, next) {
-  Member.find()
+  Comment.find()
     .then(members => res.json(members))
     .catch(next);
 }
 
 export function create(req, res, next) {
-  Member({
+  Comment({
     userId: req.body.userId,
-    startedDate: req.body.startedDate,
-    name: req.body.name
+    placeId: req.body.placeId,
+    comment: req.body.comment
   }).save()
     .catch((err) => {
       throw new ValidationError(err.message);
@@ -26,8 +26,8 @@ export function create(req, res, next) {
     .catch(next);
 }
 
-function getMember(userId) {
-  return Member.findOne({ userId: { $regex: `^${userId}$`, $options: 'i' } })
+function getComment(userId) {
+  return Comment.findOne({ userId: { $regex: `^${userId}$`, $options: 'i' } })
     .then((member) => {
       if (member) {
         return member;
@@ -38,15 +38,15 @@ function getMember(userId) {
 
 export function show(req, res, next) {
   const userId = req.params.id;
-  getMember(userId)
+  getComment(userId)
     .then(member => res.json(member))
     .catch(next);
 }
 
 export function update(req, res, next) {
   const userId = req.params.id;
-  getMember(userId)
-    .then(member => Member(Object.assign(member, req.body)))
+  getComment(userId)
+    .then(member => Comment(Object.assign(member, req.body)))
     .then(member => member.save())
     .catch((err) => {
       throw new ValidationError(err.message);
@@ -57,7 +57,7 @@ export function update(req, res, next) {
 
 export function destroy(req, res, next) {
   const userId = req.params.id;
-  getMember(userId)
+  getComment(userId)
     .then(member => member.remove())
     .then(res.status(204).end())
     .catch(next);

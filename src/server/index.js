@@ -6,8 +6,8 @@ import { initDatabase } from './db/mongo';
 import routes from './api/routes';
 
 const app = express();
-const log = debug('papairus:app');
-const error = debug('papairus:app:error');
+const log = debug('feedback:app');
+const error = debug('feedback:app:error');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
